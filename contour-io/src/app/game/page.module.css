@@ -1,0 +1,21 @@
+.logContainer {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  border: var(--primary-border);
+  border-radius: var(--secondary-border-radius);
+  height: 8rem;
+  width: 16rem;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+.log {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gameboard {
+  z-index: 1;
+}

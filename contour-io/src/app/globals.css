@@ -12,6 +12,7 @@
 
   --primary-border: 1px solid var(--primary-color);
   --border-radius: 120px;
+  --secondary-border-radius: 24px;
 }
 
 @media (prefers-color-scheme: dark) {
