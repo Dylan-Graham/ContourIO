@@ -4,9 +4,11 @@ import (
 	"bytes"
 	"log"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/gorilla/websocket"
+	"github.com/joho/godotenv"
 )
 
 const (
@@ -21,14 +23,22 @@ var (
 	space   = []byte{' '}
 )
 
+var allowedOrigins = make(map[string]bool)
+
+func init() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+	allowedOrigins[os.Getenv("ALLOWED_ORIGIN")] = true
+	log.Println("Allowed origins loaded...")
+}
+
 var upgrader = websocket.Upgrader{
 	ReadBufferSize:  1024,
 	WriteBufferSize: 1024,
 	CheckOrigin: func(r *http.Request) bool {
-		allowedOrigins := map[string]bool{
-			"http://localhost:3000": true,
-			"http://localhost:8080": true,
-		}
+		allowedOrigins := allowedOrigins
 		origin := r.Header.Get("Origin")
 		return allowedOrigins[origin]
 	},
