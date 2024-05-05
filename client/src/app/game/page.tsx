@@ -7,7 +7,8 @@ export default function Game() {
   const [logs, setLogs] = useState<string[]>([]);
 
   useEffect(() => {
-    const conn = new WebSocket("ws://localhost:8080/ws");
+    const serverUrl = process.env.NEXT_PUBLIC_SERVER_URL;
+    const conn = new WebSocket(`ws://${serverUrl}/ws`);
 
     conn.onopen = function () {
       console.log("Connected to WebSocket server");
