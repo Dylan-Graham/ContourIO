@@ -35,8 +35,12 @@ export default function Game() {
     <>
       <div className={styles.gameboard}>THE GAMEBOARD</div>
       <div className={styles.logContainer}>
-        {logs.map((log) => {
-          return <div className={styles.log}>{log}</div>;
+        {logs.map((log, index) => {
+          return (
+            <div key={index} className={styles.log}>
+              {log}
+            </div>
+          );
         })}
       </div>
     </>
