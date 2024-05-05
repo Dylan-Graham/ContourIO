@@ -8,7 +8,7 @@ export default function Game() {
 
   useEffect(() => {
     const serverUrl = process.env.NEXT_PUBLIC_SERVER_URL;
-    const conn = new WebSocket(`ws://${serverUrl}/ws`);
+    const conn = new WebSocket(`${serverUrl}/ws`);
 
     conn.onopen = function () {
       console.log("Connected to WebSocket server");
