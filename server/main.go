@@ -2,24 +2,15 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"log"
 	"net/http"
-	"os"
 	"time"
 )
 
-var addr = flag.String("addr", "", "http service address")
+var addr = flag.String("addr", ":8080", "http service address")
 
 func main() {
 	flag.Parse()
-
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8080"
-	}
-
-	*addr = fmt.Sprintf(":%s", port)
 
 	hub := newHub()
 	go hub.run()

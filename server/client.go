@@ -4,11 +4,9 @@ import (
 	"bytes"
 	"log"
 	"net/http"
-	"os"
 	"time"
 
 	"github.com/gorilla/websocket"
-	"github.com/joho/godotenv"
 )
 
 const (
@@ -26,11 +24,8 @@ var (
 var allowedOrigins = make(map[string]bool)
 
 func init() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
-	allowedOrigins[os.Getenv("ALLOWED_ORIGIN")] = true
+	allowedOrigins["https://contour-io-client.vercel.app"] = true
+	allowedOrigins["http://localhost:3000"] = true
 	log.Println("Allowed origins loaded...")
 }
 
